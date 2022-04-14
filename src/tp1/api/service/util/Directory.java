@@ -25,19 +25,19 @@ public interface Directory {
 	Result<FileInfo> writeFile(String filename, byte []data, String userId, String password);
 
 	/**
-	 * Delete an existing file ("userId/filename"). 
+	 * Delete an existing file ("userId/filename").
 	 * Only the owner (userId) can delete the file.
-	 * 
+	 *
 	 * @param filename - name of the file.
 	 * @param userId - id of the user.
 	 * @param password - the password of the user.
-	 * 
-	 * @return OK if success; 
+	 *
+	 * @return OK if success;
 	 *	   NOT_FOUND if the userId or filename does not exist.
 	 *         FORBIDDEN if the password is incorrect.
 	 * 	   BAD_REQUEST otherwise.
 	 */
-	Result<void> deleteFile(String filename, String userId, String password);
+	//Result<void> deleteFile(String filename, String userId, String password);
 
 	/**
 	 * Share the file "userId/filename" with another user. 

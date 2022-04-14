@@ -2,7 +2,7 @@ package tp1.server.Rest;
 
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import sd2122.aula3.server.resources.UsersResource;
+import tp1.server.Rest.resources.UsersResource;
 import util.Debug;
 
 import java.net.InetAddress;

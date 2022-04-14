@@ -1,4 +1,7 @@
-package tp1.server.Rest.resources;
+package sd2122.aula3.server.resources;
+
+import java.util.*;
+import java.util.logging.Logger;
 
 import jakarta.inject.Singleton;
 import jakarta.ws.rs.WebApplicationException;
@@ -6,13 +9,10 @@ import jakarta.ws.rs.core.Response.Status;
 import tp1.api.User;
 import tp1.api.service.rest.RestUsers;
 
-import java.util.*;
-import java.util.logging.Logger;
-
 @Singleton
 public class UsersResource implements RestUsers {
 
-	private final Map<String,User> users = new HashMap<>();
+	private final Map<String, User> users = new HashMap<>();
 
 	private static Logger Log = Logger.getLogger(UsersResource.class.getName());
 
@@ -46,18 +46,18 @@ public class UsersResource implements RestUsers {
 	public User getUser(String userId, String password) {
 		Log.info("getUser : user = " + userId + "; pwd = " + password);
 
-		// Check if user is valid
-		if(userId == null || password == null) {
-			Log.info("UserId or password null.");
-			throw new WebApplicationException( Status.BAD_REQUEST );
-		}
-
 		User user = users.get(userId);
 
 		// Check if user exists
 		if( user == null ) {
 			Log.info("User does not exist.");
 			throw new WebApplicationException( Status.NOT_FOUND );
+		}
+
+		// Check if user is valid
+		if(userId == null || password == null) {
+			Log.info("UserId or password null.");
+			throw new WebApplicationException( Status.FORBIDDEN );
 		}
 
 		//Check if the password is correct
@@ -78,7 +78,7 @@ public class UsersResource implements RestUsers {
 		// Check if user is valid
 		if(userId == null || password == null) {
 			Log.info("UserId or password null.");
-			throw new WebApplicationException( Status.BAD_REQUEST );
+			throw new WebApplicationException( Status.FORBIDDEN );
 		}
 
 		User user = users.get(userId);
@@ -94,13 +94,19 @@ public class UsersResource implements RestUsers {
 			Log.info("Password is incorrect.");
 			throw new WebApplicationException( Status.FORBIDDEN );
 		}
+		String id = user.getUserId();
+		if(updatedUser.getUserId() != null) {
+			user.setUserId(updatedUser.getUserId());
+			id = updatedUser.getUserId();
+			users.put(id,user);}
+		if(updatedUser.getPassword() != null)
+			user.setPassword(updatedUser.getPassword());
+		if(updatedUser.getEmail() != null)
+			user.setEmail(updatedUser.getEmail());
+		if(updatedUser.getFullName() != null)
+			user.setFullName(updatedUser.getFullName());
 
-		user.setUserId(updatedUser.getUserId());
-		user.setPassword(updatedUser.getPassword());
-		user.setEmail(updatedUser.getEmail());
-		user.setFullName(updatedUser.getFullName());
-
-		return user;
+		return users.get(id);
 	}
 
 
@@ -111,7 +117,7 @@ public class UsersResource implements RestUsers {
 		// Check if user is valid
 		if(userId == null || password == null) {
 			Log.info("UserId or password null.");
-			throw new WebApplicationException( Status.BAD_REQUEST );
+			throw new WebApplicationException( Status.FORBIDDEN );
 		}
 
 		User user = users.get(userId);
@@ -139,16 +145,15 @@ public class UsersResource implements RestUsers {
 		Log.info("searchUsers : pattern = " + pattern);
 
 		// To Test
-
-		Collection<User> matchingUsers = users.values();
-
-		for (User user: matchingUsers) {
-			if(!user.getFullName().contains(pattern)) {
-				matchingUsers.remove(user);
+		List<User> res = new ArrayList<>();
+		String LowerPattern = pattern.toLowerCase();
+		for (Map.Entry<String,User> set: users.entrySet()) {
+			if(set.getValue().getFullName().toLowerCase().contains(LowerPattern)) {
+				res.add(set.getValue());
 			}
 		}
 
-		return new ArrayList<>(matchingUsers);
+		return res;
 	}
 
 }
