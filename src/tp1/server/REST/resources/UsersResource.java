@@ -94,19 +94,17 @@ public class UsersResource implements RestUsers {
 			Log.info("Password is incorrect.");
 			throw new WebApplicationException( Status.FORBIDDEN );
 		}
-		String id = user.getUserId();
-		if(updatedUser.getUserId() != null) {
-			user.setUserId(updatedUser.getUserId());
-			id = updatedUser.getUserId();
-			users.put(id,user);}
-		if(updatedUser.getPassword() != null)
-			user.setPassword(updatedUser.getPassword());
-		if(updatedUser.getEmail() != null)
-			user.setEmail(updatedUser.getEmail());
-		if(updatedUser.getFullName() != null)
-			user.setFullName(updatedUser.getFullName());
 
-		return users.get(id);
+		if(updatedUser.getUserId() == userId || updatedUser.getUserId() == null) {
+
+			if (updatedUser.getPassword() != null)
+				user.setPassword(updatedUser.getPassword());
+			if (updatedUser.getEmail() != null)
+				user.setEmail(updatedUser.getEmail());
+			if (updatedUser.getFullName() != null)
+				user.setFullName(updatedUser.getFullName());
+		}
+		return users.get(userId);
 	}
 
 
