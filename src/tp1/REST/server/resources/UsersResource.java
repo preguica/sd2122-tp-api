@@ -1,4 +1,4 @@
-package sd2122.aula3.server.resources;
+package tp1.REST.server.resources;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -144,7 +144,6 @@ public class UsersResource implements RestUsers {
 	public List<User> searchUsers(String pattern) {
 		Log.info("searchUsers : pattern = " + pattern);
 
-		// To Test
 		List<User> res = new ArrayList<>();
 		String LowerPattern = pattern.toLowerCase();
 		for (Map.Entry<String,User> set: users.entrySet()) {

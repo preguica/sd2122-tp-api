@@ -1,4 +1,4 @@
-package tp1.clients.Rest;
+package tp1.REST.clients;
 
 import util.Debug;
 
@@ -7,9 +7,8 @@ import java.net.URI;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class GetUserClient {
-
-    private static Logger Log = Logger.getLogger(GetUserClient.class.getName());
+public class DeleteUserClient {
+    private static Logger Log = Logger.getLogger(DeleteUserClient.class.getName());
 
     static {
         System.setProperty("java.net.preferIPv4Stack", "true");
@@ -17,10 +16,11 @@ public class GetUserClient {
 
     public static void main(String[] args) throws IOException {
 
-        Debug.setLogLevel(Level.FINE, Debug.SD2122);
+        Debug.setLogLevel( Level.FINE, Debug.SD2122 );
+
 
         if( args.length != 3) {
-            System.err.println( "Use: java sd2122.aula2.clients.GetUserClient url userId password");
+            System.err.println( "Use: java sd2122.aula2.clients.DeleteUserClient url userId password");
             return;
         }
 
@@ -30,7 +30,7 @@ public class GetUserClient {
 
         Log.info("Sending request to server.");
 
-        var result = new RestUsersClient(URI.create(serverUrl)).getUser(userId,password);
+        var result = new RestUsersClient(URI.create(serverUrl)).deleteUser(userId,password);
         System.out.println("Result: " + result);
     }
 }

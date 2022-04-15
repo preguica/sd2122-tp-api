@@ -1,4 +1,4 @@
-package tp1.clients.Rest;
+package tp1.REST.clients;
 
 import tp1.api.User;
 import util.Debug;

@@ -1,8 +1,8 @@
-package tp1.server.Rest;
+package tp1.REST.server;
 
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-import tp1.server.Rest.resources.UsersResource;
+import tp1.REST.server.resources.UsersResource;
 import util.Debug;
 
 import java.net.InetAddress;

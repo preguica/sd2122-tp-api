@@ -1,4 +1,4 @@
-package tp1.clients.Rest;
+package tp1.REST.clients;
 
 import java.io.IOException;
 import java.net.URI;

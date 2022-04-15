@@ -1,4 +1,4 @@
-package tp1.server.Rest.util;
+package tp1.REST.server.util;
 
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.container.ContainerRequestContext;
