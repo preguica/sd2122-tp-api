@@ -1,5 +1,6 @@
-package tp1.REST.clients;
+package tp1.clients;
 
+import tp1.clients.REST.RestUsersClient;
 import util.Debug;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class GetUserClient {
         Debug.setLogLevel(Level.FINE, Debug.SD2122);
 
         if( args.length != 3) {
-            System.err.println( "Use: java sd2122.aula2.clients.GetUserClient url userId password");
+            System.err.println( "Use: java sd2122.tp1.clients.GetUserClient url userId password");
             return;
         }
 

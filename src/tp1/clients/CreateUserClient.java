@@ -1,4 +1,4 @@
-package tp1.REST.clients;
+package tp1.clients;
 
 import java.io.IOException;
 import java.net.URI;
@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import tp1.api.User;
+import tp1.clients.REST.RestUsersClient;
 import util.Debug;
 
 public class CreateUserClient {
@@ -21,7 +22,7 @@ public class CreateUserClient {
 		Debug.setLogLevel( Level.FINE, Debug.SD2122 );
 		
 		if (args.length != 5) {
-			System.err.println("Use: java sd2122.aula3.clients.CreateUserClient url userId fullName email password");
+			System.err.println("Use: java sd2122.tp1.clients.CreateUserClient url userId fullName email password");
 			return;
 		}
 

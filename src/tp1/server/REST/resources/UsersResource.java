@@ -1,4 +1,4 @@
-package tp1.REST.server.resources;
+package tp1.server.REST.resources;
 
 import java.util.*;
 import java.util.logging.Logger;

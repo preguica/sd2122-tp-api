@@ -1,6 +1,7 @@
-package tp1.REST.clients;
+package tp1.clients;
 
 import tp1.api.User;
+import tp1.clients.REST.RestUsersClient;
 import util.Debug;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class UpdateUserClient {
         Debug.setLogLevel(Level.FINE, Debug.SD2122);
 
         if (args.length != 6) {
-            System.err.println("Use: java sd2122.aula2.clients.UpdateUserClient url userId oldpwd fullName email password");
+            System.err.println("Use: java sd2122.tp1.clients.UpdateUserClient url userId oldpwd fullName email password");
             return;
         }
 
