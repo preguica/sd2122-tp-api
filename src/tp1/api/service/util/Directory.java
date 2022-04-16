@@ -37,8 +37,8 @@ public interface Directory {
 	 *         FORBIDDEN if the password is incorrect.
 	 * 	   BAD_REQUEST otherwise.
 	 */
+  
 	//Result<void> deleteFile(String filename, String userId, String password);
-
 	/**
 	 * Share the file "userId/filename" with another user. 
 	 * Only the owner (userId) can share the file.
