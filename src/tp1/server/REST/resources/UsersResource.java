@@ -73,7 +73,6 @@ public class UsersResource implements RestUsers {
 	@Override
 	public User updateUser(String userId, String password, User updatedUser) {
 		Log.info("updateUser : user = " + userId + "; pwd = " + password + " ; updatedUser = " + updatedUser);
-		// To Test
 
 		// Check if user is valid
 		if(userId == null || password == null) {

@@ -1,4 +1,4 @@
-package tp1.REST.clients;
+package tp1.clients.REST;
 
 import java.net.URI;
 import java.util.function.Supplier;

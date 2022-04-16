@@ -32,6 +32,6 @@ public class DeleteUserClient {
         Log.info("Sending request to server.");
 
         var result = new RestUsersClient(URI.create(serverUrl)).deleteUser(userId,password);
-        System.out.println("Result: " + result);
+        System.out.println("Result: " + result.value());
     }
 }

@@ -36,6 +36,6 @@ public class UpdateUserClient {
         Log.info("Sending request to server.");
 
         var result = new RestUsersClient(URI.create(serverUrl)).updateUser(userId,oldpwd,u);
-        System.out.println("Result: " + result);
+        System.out.println("Result: " + result.value());
     }
 }
