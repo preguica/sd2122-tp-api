@@ -17,7 +17,10 @@ import tp1.api.User;
 @Path(RestUsers.PATH)
 public interface RestUsers {
 
-	static final String PATH="/users";
+	public static final String PATH="/users";
+	public static final String QUERY = "query";
+	public static final String USER_ID = "userId";
+	public static final String PASSWORD = "password";
 
 	/**
 	 * Creates a new user.
@@ -93,4 +96,9 @@ public interface RestUsers {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	List<User> searchUsers(@QueryParam("query") String pattern);
+	
+	@GET
+	@Path("/hasUser/{userId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	boolean hasUser(@PathParam("userId") String userId);
 }

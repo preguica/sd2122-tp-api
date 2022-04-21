@@ -61,4 +61,6 @@ public interface Users {
 	 *         400 otherwise.
 	 */
 	Result<List<User>> searchUsers(String pattern);
+	
+	Result<Boolean> hasUser(String userId);
 }
