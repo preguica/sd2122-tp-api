@@ -74,7 +74,7 @@ public class JavaDirectory implements Directory{
 		
 		FileInfo f = files.get(userId + "_" + filename);
 		
-		URI fileUri = URI.create(f.getFileURL().replace("/" + userId + "_" + filename, ""));
+		URI fileUri = URI.create(f.getFileURL().replace( RestFiles.PATH + "/" + userId + "_" + filename, ""));
 		
 		RestFilesClient rfc = new RestFilesClient(fileUri); 
 		
@@ -105,6 +105,7 @@ public class JavaDirectory implements Directory{
 		FileInfo file = files.get(userId + "_" + filename);
 		Set<String> sharedWith = file.getSharedWith();
 		sharedWith.add(userIdShare);
+		System.out.println(sharedWith);
 		file.setSharedWith(sharedWith);
 		
 		return Result.ok();
