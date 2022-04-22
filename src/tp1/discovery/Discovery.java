@@ -156,12 +156,15 @@ public class Discovery {
 	 */
 	public URI[] knownUrisOf(String serviceName) throws Exception {
 		while (true) {
+			int timeoutCount = 0;
             var map = info.get(serviceName);
             if (map != null) {
-                URI[] uris = map.keySet().toArray(new URI[1000]);
-                return uris;
+            	URI[] uris = new URI[map.keySet().size()];
+                return map.keySet().toArray(uris);
             } else {
+            	if (timeoutCount >= 5)
                 Thread.sleep(DISCOVERY_PERIOD);
+                timeoutCount++;
             }
         }
 	}	
